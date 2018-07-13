@@ -1,0 +1,177 @@
+html{
+  width: 100vw;
+  height: 100vh;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  margin-left: 15px;
+  margin-right: 15px;
+  background:linear-gradient(to right,#222C39,#1F2834);
+  font-family: 'Poppins', sans-serif;
+  color: #e9ebeb;
+  line-height: 1.5;
+}
+a{
+  text-decoration: none;
+  color: #e9ebeb;
+}
+p{
+  font-weight: 100;
+}
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  border-bottom: 2px solid #01A7E6 !important;
+  font-size: 1.2em;
+}
+.regbtn{
+  display: inline-block;
+  border: 1px solid #e9ebeb;
+  background: #25C3B5 !important;
+  color: #e9ebeb;
+  padding: 10px;
+  border-radius: 3px;
+  transition-timing-function: ease;
+  transition-duration: 1ms;
+}
+.regbtn:hover{
+  background: #AD1457 !important;
+}
+.sig{
+  margin-right: 40px;
+}
+.container {
+  max-width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  height: 100%;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+  width: 100%;
+  display: flex;
+}
+.dia-6{
+  position: relative;
+  min-height: 1vh;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 50%;
+  height: 100vh;
+}
+.default{
+  color:#01A7E6;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Montserrat', sans-serif;
+}
+h4{
+  font-size: 40px;
+}
+.right-col{
+  display: flex;
+  align-items: center;
+}
+.p-text{
+  font-size: 2.2em;
+}
+/* .sign-up{
+  background: #222C39;
+  margin: auto;
+
+} */
+input[type="text"],input[type="email"],input[type="password"]{
+  background-color: transparent;
+  border: 0 none;
+  border-bottom: 1px solid #293441;
+  width: 96%;
+  padding: 2%;
+  color: #e9ebeb;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em; 
+}
+input:focus{
+  outline: none;
+  border-bottom: 1px solid #e9ebeb;
+}
+.input-row {
+  padding-bottom: 25px;
+}
+.btn.bordered {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+.btn.block {
+  width: 100%;
+  padding: .8em;
+  border-width: 0;
+  border-radius: 2px;
+}
+.light-text, a.light-text {
+  color: #e9ebeb;
+}
+.tertiary-bg {
+  background-color: #293441;
+}
+.auth-link a:first-child {
+  border-right-width: 1px;
+  border-right-style: dashed;
+  border-right-color: #e9ebeb;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.reg-link a, .auth-link a {
+  font-size: 1.2em;
+}
+.pr-20 {
+  padding-right: 20px;
+}
+.pl-20 {
+  padding-left: 20px;
+}
+.pb-5 {
+  padding-bottom: 5px;
+}
+.pt-5 {
+  padding-top: 5px;
+}
+.pt-40 {
+  padding-top: 40px;
+}
+.pt-120{
+  padding-top: 120px;
+}
+.home{
+  background: url(../img/unidiary_transparent.png);
+  /* background-repeat: no-repeat;*/
+  background-size: cover; 
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+  
+  padding-left: 25px;
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
