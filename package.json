@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha tests/**/*.js --require babel-core/register",
-    "dev-start": "babel-node app.js"
+    "dev-start": "nodemon app --exec babel-node"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,9 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "express": "^4.16.3"
+    "celebrate": "^8.0.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0"
   }
 }
