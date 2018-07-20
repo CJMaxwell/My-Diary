@@ -32,7 +32,7 @@ class DiaryController {
     };
     entries.push(entry);
     res.json({
-      entries,
+      entry,
     });
   }
 
