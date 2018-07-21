@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(process.eventNames.PORT || 4000);
+app.listen(process.env.PORT || 4000);
 
 export default app;
