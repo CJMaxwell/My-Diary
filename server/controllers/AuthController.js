@@ -6,20 +6,25 @@ dotenv.config();
 
 class AuthController {
   static async register(req, res) {
-    const { userName, email } = users[0];
-    const user = {
+    const entries = users;
+    const { userName, email } = req.body;
+    const newUser = {
       userName,
       email,
     };
+    entries.push(newUser);
+    res.json({
+      newUser,
+    });
 
     const token = await jwt.sign(
-      user,
+      newUser,
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRY },
     );
 
     res.json({
-      user,
+      newUser,
       token,
     });
   }

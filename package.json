@@ -7,7 +7,7 @@
     "node": "10.1.0"
   },
   "scripts": {
-    "test": "mocha tests/**/*.js --require babel-core/register  --timeout 100000 --exit",
+    "test": "mocha server/tests/**/*.js --require babel-core/register  --timeout 100000 --exit",
     "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register tests/**/*.js --timeout 600000 --exit",
     "coveralls": "npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls",
     "dev-start": "nodemon app --exec babel-node"

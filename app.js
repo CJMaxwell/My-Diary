@@ -1,6 +1,6 @@
 import express from 'express';
-import authRoutes from './routes/authRoutes';
-import diaryRoutes from './routes/diaryRoutes';
+import authRoutes from './server/routes/authRoutes';
+import diaryRoutes from './server/routes/diaryRoutes';
 
 const app = express();
 

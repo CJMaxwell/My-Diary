@@ -2,7 +2,7 @@ import  { expect } from 'chai';
 import request from 'supertest';
 import 'babel-polyfill';
 
-import app from '../../app';
+import app from '../../../app';
 
 
 describe('When a User signs up', () => {
@@ -13,11 +13,10 @@ describe('When a User signs up', () => {
       .send({
         userName: 'Maxwell',
         email: 'chukwunonyeremmaxwell@gmail.com',
-        password: 'helloWorld'
+        password: 'helloWorld',
       });
-      expect(response.body.user.userName).to.equal('Maxwell');
-      expect(response.body.user.email).to.equal('chukwunonyeremmaxwell@gmail.com');
-      expect(response.body.token).to.be.a('string');
+    expect(response.body.newUser.userName).to.equal('Maxwell');
+    expect(response.body.newUser.email).to.equal('chukwunonyeremmaxwell@gmail.com');
   });
 });
 
@@ -29,11 +28,11 @@ describe('When a User signs in', () => {
       .send({
         userName: 'Maxwell',
         email: 'chukwunonyeremmaxwell@gmail.com',
-        password: 'helloWorld'
+        password: 'helloWorld',
       });
-      expect(response.body.user.userName).to.equal('Maxwell');
-      expect(response.body.user.email).to.equal('chukwunonyeremmaxwell@gmail.com');
-      expect(response.body.token).to.be.a('string');
+    expect(response.body.user.userName).to.equal('Maxwell');
+    expect(response.body.user.email).to.equal('chukwunonyeremmaxwell@gmail.com');
+    expect(response.body.token).to.be.a('string');
   });
 });
 
@@ -43,7 +42,6 @@ describe('When a User signs in with invalid credentials', () => {
       .post('/api/v1/users/login')
       .set('Accept', 'application/x-www-form-urlencoded')
       .send({});
-      expect(response.body.error).to.equal('Either password or email is incorrect');
-      
+    expect(response.body.error).to.equal('Either password or email is incorrect');
   });
-})
+});
