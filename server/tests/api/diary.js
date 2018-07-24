@@ -2,7 +2,7 @@ import  { expect } from 'chai';
 import request from 'supertest';
 import 'babel-polyfill';
 
-import app from '../../app';
+import app from '../../../app';
 
 
 describe('When a User enters an entry', () => {
