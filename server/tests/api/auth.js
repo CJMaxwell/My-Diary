@@ -15,9 +15,8 @@ describe('When a User signs up', () => {
         email: 'chukwunonyeremmaxwell@gmail.com',
         password: 'helloWorld',
       });
-    expect(response.body.user.userName).to.equal('Maxwell');
-    expect(response.body.user.email).to.equal('chukwunonyeremmaxwell@gmail.com');
-    expect(response.body.token).to.be.a('string');
+    expect(response.body.newUser.userName).to.equal('Maxwell');
+    expect(response.body.newUser.email).to.equal('chukwunonyeremmaxwell@gmail.com');
   });
 });
 
