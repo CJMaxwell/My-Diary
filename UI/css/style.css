@@ -238,6 +238,10 @@ h3{
   margin-left: auto;
   margin-right: auto;
 }
+img.diary_logo {
+  padding-left: 24px;
+}
+
 .memForm{
   margin-top: 30px;
 }
@@ -249,11 +253,15 @@ h3{
     margin-left: 95px;
     margin-right: 95px;
 }
+img.diary_logo {
+  padding-left: 87px;
+}
 .dia-6 {
   padding-right: 120px;
   padding-left: 120px;
   width: 100%;
 }
+
 .home {
   background-position: 100% 100%;
 }
