@@ -1,0 +1,47 @@
+{
+  "name": "my-diary",
+  "version": "1.0.0",
+  "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
+  "main": "app.js",
+  "engines": {
+    "node": "10.1.0"
+  },
+  "scripts": {
+    "test": "mocha server/tests/**/*.js --require babel-core/register  --timeout 100000 --exit",
+    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha --reporter spec --require babel-register tests/**/*.js --timeout 600000 --exit",
+    "coveralls": "npm run coverage -- --report lcovonly && cat coverage/lcov.info | coveralls",
+    "dev-start": "nodemon app --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJMaxwell/My-Diary.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CJMaxwell/My-Diary/issues"
+  },
+  "homepage": "https://github.com/CJMaxwell/My-Diary#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "supertest": "^3.1.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "celebrate": "^8.0.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0"
+  }
+}
