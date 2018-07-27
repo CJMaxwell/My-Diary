@@ -241,6 +241,9 @@ h3{
 .memForm{
   margin-top: 30px;
 }
+img.diary_logo {
+  padding-left: 32px;
+}
 @media (max-width: 768px) {
   .container {
     width: 750px;
@@ -304,4 +307,65 @@ body{
     width: 1170px;
   }
   
+}
+
+@media (max-width: 425px) {
+  img.diary_logo {
+      padding-left: 80px;
+  }
+  h4 {
+      font-size: 69px;
+  }
+  p {
+      font-size: 36px;
+      line-height: 1.5;
+  }
+  .home {
+      background: url(../img/unidiary_transparent.png);
+      background-size: cover;
+      background-position: -519px 350px !important;
+  }
+  .nav-item {
+      margin-top: 20px;
+      border: 1px solid #AD1457;
+      background: #222C39;
+      padding: 6px;
+      border-radius: 5px;
+      font-size: 45px;
+  }
+  h3 {
+    font-size: 40px;
+    line-height: 1.4;
+}
+  }
+@media (max-width: 320px) {
+  h4 {
+      font-size: 74px;
+  }
+  
+  p {
+      font-size: 38px;
+      line-height: 1.5;
+  }
+  .home {
+      background: url(../img/unidiary_transparent.png);
+      background-size: cover;
+      background-position: -507px 366px!important;
+  }
+  .nav-item {
+      margin-top: 20px;
+      border: 1px solid #AD1457;
+      background: #222C39;
+      padding: 6px;
+      border-radius: 5px;
+      font-size: 64px;
+  }
+  img.diary_logo {
+      padding-left: 93px;
+      padding-top: 41px;
+  }
+  h3 {
+    font-size: 40px;
+    line-height: 1.4;
+  }
 }
