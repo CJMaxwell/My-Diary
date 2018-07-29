@@ -1,59 +1,70 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import users from '../db/users.json';
-
-dotenv.config();
+import models from '../models';
+import hashPassword from '../helpers/hashPassword';
+import generateToken from '../helpers/generateToken';
+import comparePassword from '../helpers/comparePassword';
 
 class AuthController {
   static async register(req, res) {
-    const entries = users;
-    const { userName, email } = req.body;
-    const newUser = {
-      userName,
-      email,
-    };
-    entries.push(newUser);
-    res.json({
-      newUser,
-    });
+    try {
+      const { username, email, password } = req.body;
+      const hashedPassword = await hashPassword(password);
 
-    const token = await jwt.sign(
-      newUser,
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRY },
-    );
+      await models.query(`INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${hashedPassword}')`);
 
-    res.json({
-      newUser,
-      token,
-    });
+      const { rows } = await models.query(`SELECT id FROM users WHERE email = '${email}'`);
+
+      const user = {
+        id: rows[0].id,
+        username,
+        email,
+      };
+
+      res.json({
+        user,
+        token: await generateToken(user),
+      });
+    } catch (err) {
+      res.json(err);
+    }
   }
 
   static async login(req, res) {
-    const { userName, email, password } = users[0];
+    try {
+      const { email, password } = req.body;
+      const { rows } = await models.query(`SELECT * FROM users WHERE email = '${email}'`);
 
-    const loginEmail = req.body.email;
-    const loginPassword = req.body.password;
+      if (rows.length > 0) {
+        const {
+          id,
+          username,
+        } = rows[0];
 
-    const user = {
-      userName,
-      email,
-    };
+        const hashedPassword = rows[0].password;
+        const passwordMatches = comparePassword(password, hashedPassword);
 
-    if (loginEmail === email && password === loginPassword) {
-      const token = await jwt.sign(
-        user,
-        process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_EXPIRY },
-      );
-      res.json({
-        user,
-        token,
-      });
-    } else {
-      res.json({
-        error: 'Either password or email is incorrect',
-      });
+        if (passwordMatches === true) {
+          const user = {
+            id,
+            username,
+            email,
+          };
+
+          res.json({
+            user,
+            token: await generateToken(user),
+          });
+        } else {
+          res.json({
+            error: 'Password is incorrect',
+          });
+        }
+      } else {
+        res.json({
+          error: 'Email does not exist',
+        });
+      }
+    } catch (err) {
+      res.json(err);
     }
   }
 }
