@@ -1,4 +1,3 @@
-import diary from '../db/diary.json';
 
 class DiaryController {
   static async getEntries(req, res) {
