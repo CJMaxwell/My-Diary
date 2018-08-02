@@ -4,7 +4,7 @@ import generateToken from '../helpers/generateToken';
 import comparePassword from '../helpers/comparePassword';
 
 class AuthController {
-  static async register(req, res) {
+  static async signup(req, res) {
     try {
       const { username, email, password } = req.body;
       const hashedPassword = await hashPassword(password);
