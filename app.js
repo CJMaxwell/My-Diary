@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import expressValidator from 'express-validator';
 import authRoutes from './server/routes/authRoutes';
 import diaryRoutes from './server/routes/diaryRoutes';
 
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(expressValidator());
 
 app.use('/api/v1', authRoutes);
 app.use('/api/v1', diaryRoutes);

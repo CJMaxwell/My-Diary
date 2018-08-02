@@ -19,16 +19,27 @@ class DiaryController {
 
   static async createEntry(req, res) {
     try {
-      const { title, body } = req.body;
-      await models.query(`INSERT INTO diaryentry (title, body, userid)
-        VALUES ('${title}', '${body}', '${req.user.id}')`);
+      req.checkBody('title', 'Title must not be less than 8 characters').isLength({ min: 8 });
+      req.checkBody('body', 'Entry cannot be least than 20 characters').isLength({ min: 20 });
 
-      const entry = await models.query(`SELECT title, body, createdat, updatedat FROM diaryentry
-        WHERE userid = ${req.user.id} ORDER BY id DESC`);
+      const reqErr = req.validationErrors();
 
-      res.json({
-        entry: entry.rows[0],
-      });
+      if (reqErr) {
+        res.status(400).json({
+          errors: reqErr,
+        });
+      } else {
+        const { title, body } = req.body;
+        await models.query(`INSERT INTO diaryentry (title, body, userid)
+          VALUES ('${title}', '${body}', '${req.user.id}')`);
+
+        const entry = await models.query(`SELECT title, body, createdat, updatedat FROM diaryentry
+          WHERE userid = ${req.user.id} ORDER BY id DESC`);
+
+        res.json({
+          entry: entry.rows[0],
+        });
+      }
     } catch (err) {
       res.json({
         err,
@@ -101,13 +112,24 @@ class DiaryController {
 
   static async updateEntry(req, res) {
     try {
-      const { entryId } = req.params;
-      const { title, body } = req.body;
-      const updatedEntry = await models.query(`UPDATE diaryentry SET title = '${title}', body = '${body}'
-        WHERE userid = ${req.user.id} AND id =${entryId} RETURNING title, body`);
-      res.json({
-        updatedEntry: updatedEntry.rows,
-      });
+      req.checkBody('title', 'Title must not be less than 8 characters').isLength({ min: 8 });
+      req.checkBody('body', 'Entry cannot be least than 20 characters').isLength({ min: 20 });
+
+      const reqErr = req.validationErrors();
+
+      if (reqErr) {
+        res.status(400).json({
+          errors: reqErr,
+        });
+      } else {
+        const { entryId } = req.params;
+        const { title, body } = req.body;
+        const updatedEntry = await models.query(`UPDATE diaryentry SET title = '${title}', body = '${body}'
+          WHERE userid = ${req.user.id} AND id =${entryId} RETURNING title, body`);
+        res.json({
+          updatedEntry: updatedEntry.rows,
+        });
+      }
     } catch (err) {
       res.json({
         err,
