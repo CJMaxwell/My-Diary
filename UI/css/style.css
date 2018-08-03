@@ -8,8 +8,6 @@ html{
   box-sizing: border-box;
 }
 body{
-  margin-left: 15px;
-  margin-right: 15px;
   background:#1F2834;
   font-family: 'Poppins', sans-serif;
   color: #e9ebeb;
@@ -182,11 +180,33 @@ input:focus, textarea:focus{
 li{
   list-style: none;
 }
+img.diary_logo.userD {
+  margin-left: 47px;
+  width: 112px;
+  height: auto;
+}
+.fa-trash-o {
+  padding-left: 20px;
+  color: #AD1457 !important;
+}
+div#action-icons {
+  position: relative;
+  top: 0;
+  left: calc(100% - 50px);
+  cursor: pointer;
+}
 .menu-sidebar-top-avatar{
   width: 200px;
   height: 200px;
   border: 10px solid #1F2834;
   border-radius: 50%;
+}
+
+#home-text {
+  margin-top: 145px;
+}
+#signIn{
+  padding-right: 64px;
 }
 
 .dashboard-details{
@@ -204,6 +224,8 @@ li{
   width: calc(0.6 * 100vw);
   margin: auto;
   padding-right: 40px;
+  margin-top: 114px !important;
+
 }
 .main-content-bkg{
   background: #222B38;
@@ -225,7 +247,7 @@ h3{
   padding-left: 54px;
 }
 .fa-book {
-  padding-left: 66px !important;
+  padding-left: 28px !important;
 }
 .fa-calendar {
   padding-left: 46px;
